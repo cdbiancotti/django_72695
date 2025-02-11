@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
+    <title>Document</title>
 </head>
 <body>
     <nav>
@@ -11,6 +11,18 @@
         <a href={% url "crear_auto" %}>Crear Auto</a>
         <a href={% url "listar_autos" %}>Listar Autos</a>
     </nav>
-    <h1>ESTE ES MI PRIMERA VISTA</h1>
+
+    {% if autos %}
+        <ul>
+            {% for auto in autos %}
+            <li>
+                {{auto}}
+            </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+    No hay autos guardados.
+    {% endif %}
+
 </body>
 </html>
