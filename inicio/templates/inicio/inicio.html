@@ -1,16 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
-</head>
-<body>
-    <nav>
-        <a href={% url "inicio" %}>Inicio</a>
-        <a href={% url "crear_auto" %}>Crear Auto</a>
-        <a href={% url "listar_autos" %}>Listar Autos</a>
-    </nav>
-    <h1>ESTE ES MI PRIMERA VISTA</h1>
-</body>
-</html>
+{% extends "template_base.html" %}
+
+{% block h1_header %}ESTE ES MI PRIMERA VISTA{% endblock h1_header %}
+
+{% block title_head %}Inicio{% endblock title_head %}
+
+{% comment %} {% block head %}
+<title>
+    Inicio
+</title>
+{% endblock head %} {% endcomment %}

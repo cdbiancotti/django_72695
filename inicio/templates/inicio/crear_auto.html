@@ -1,22 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creacion de auto</title>
-</head>
-<body>
-    <nav>
-        <a href={% url "inicio" %}>Inicio</a>
-        <a href={% url "crear_auto" %}>Crear Auto</a>
-        <a href={% url "listar_autos" %}>Listar Autos</a>
-    </nav>
-    Formulario de un auto
+{% extends "template_base.html" %}
+
+<title>
+    Creacion de auto
+</title>
+
+{% block contenido %}
+Formulario de un auto
     <form action="" method="POST">
         {% csrf_token %}
         {{formulario}}
         <input type="submit" value="Crear">
         {% comment %} <button>Soy el boton</button> {% endcomment %}
     </form>
-</body>
-</html>
+{% endblock contenido %}

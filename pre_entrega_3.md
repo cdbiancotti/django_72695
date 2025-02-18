@@ -14,9 +14,10 @@ Link de GitHub con el proyecto totalmente subido a la plataforma.
 
 Proyecto Web Django con patrón MVT que incluya:
 
+- herencia templates
 - Por lo menos 1 clases en models.
 - Un formulario para insertar datos a por cada model creado..
-- Una vista que contenga el listado de los objetos del modelo.
+- Una vista que contenga el listado de los objetos del modelo. Que contenga una barra de busqueda.
 - Readme que indique el orden en el que se prueban las cosas y/o donde están las funcionalidades.
 
 **IMPORTANTE**: A los puntos anteriores se le suma toda la estructura de archivos como lo vimos en clase.
