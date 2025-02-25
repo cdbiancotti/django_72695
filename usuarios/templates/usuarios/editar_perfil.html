@@ -1,0 +1,13 @@
+{% extends "template_base.html" %}
+
+{% block title_head %}Editar perfil{% endblock title_head %}
+
+{% block h1_header %}Editar perfil{% endblock h1_header %}
+
+{% block contenido %}
+    <form action={% url "editar_perfil" %} method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{formulario}}
+        <input type="submit" value="Editar">
+    </form>
+{% endblock contenido %}

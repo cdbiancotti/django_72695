@@ -29,7 +29,24 @@
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
                             <li class="nav-item"><a class="nav-link" href={% url "crear_auto" %}>Crear Auto</a></li>
                             <li class="nav-item"><a class="nav-link" href={% url "listar_autos" %}>Listar Autos</a></li>
-                            {% comment %} <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li> {% endcomment %}
+
+                            {% if request.user.is_authenticated %}
+                            <li class="nav-item"><a class="nav-link" href={% url "editar_perfil" %}>
+                                {% if request.user.infoextra.avatar %}
+                                <img src={{request.user.infoextra.avatar.url}} alt="Imagen de perfil" height='40px'>
+                                {% endif %}
+                                {{request.user.username}}
+                            </a></li>
+                            <li class="nav-item">
+                                <form action={% url "logout" %} method='POST'>
+                                    {% csrf_token %}
+                                    <input class="btn btn-secondary" type="submit" value='Cerrar sesion'>
+                                </form>
+                            </li>
+                            {% else %}
+                            <li class="nav-item"><a class="btn btn-primary" href={% url "login" %}>Iniciar Sesion</a></li>
+                            <li class="nav-item"><a class="btn btn-info" href={% url "registro" %}>Registrarse</a></li>
+                            {% endif %}
                         </ul>
                     </div>
                 </div>

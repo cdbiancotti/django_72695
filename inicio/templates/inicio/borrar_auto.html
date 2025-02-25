@@ -1,0 +1,14 @@
+{% extends "template_base.html" %}
+
+<title>
+    Borrar de auto
+</title>
+
+{% block contenido %}
+Borrar {{auto}}
+    <form action={% url "borrar_auto" auto.pk %} method="POST">
+        {% csrf_token %}
+        <p>Confirma el borrado del auto?</p>
+        <input type="submit" value="Confirmar">
+    </form>
+{% endblock contenido %}

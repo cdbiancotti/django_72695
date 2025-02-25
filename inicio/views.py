@@ -1,7 +1,10 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from inicio.models import Auto
-from inicio.forms import CrearAuto, BuscarAutos
+from inicio.forms import CrearAuto, BuscarAutos, EditarAutoFormulario
+from django.views.generic.edit import UpdateView, DeleteView
+from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 def inicio(request):
     # return HttpResponse("<h1>ESTE ES MI PRIMERA VISTA</h1>")
@@ -20,7 +23,8 @@ def crear_auto(request):
             auto = Auto(
                 modelo=modelo,
                 marca=formulario.cleaned_data.get('marca'),
-                descripcion=formulario.cleaned_data.get('descripcion')
+                descripcion=formulario.cleaned_data.get('descripcion'),
+                fecha_creacion=formulario.cleaned_data.get('fecha_creacion')
             )
             auto.save()
             return redirect("listar_autos")
@@ -44,3 +48,15 @@ def borrar_auto(request, id):
     auto = Auto.objects.get(id=id)
     auto.delete()
     return redirect("listar_autos")
+
+class EditarAuto(LoginRequiredMixin, UpdateView):
+    model = Auto
+    template_name = "inicio/editar_auto.html"
+    success_url = reverse_lazy("listar_autos")
+    # fields = '__all__'
+    form_class = EditarAutoFormulario
+    
+class BorrarAuto(LoginRequiredMixin, DeleteView):
+    model = Auto
+    template_name = "inicio/borrar_auto.html"
+    success_url = reverse_lazy("listar_autos")

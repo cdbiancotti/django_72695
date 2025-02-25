@@ -1,0 +1,14 @@
+{% extends "template_base.html" %}
+
+<title>
+    Editar auto
+</title>
+
+{% block contenido %}
+Formulario de edicion de un auto
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{form}}
+        <input type="submit" value="Editar">
+    </form>
+{% endblock contenido %}

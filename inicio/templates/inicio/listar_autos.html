@@ -15,7 +15,8 @@
         <li>
             {{auto}} |
             <a href={% url "detalle_auto" auto.id %}>Ver mas</a>|
-            <a href={% url "borrar_auto" auto.id %}>Borrar</a>
+            <a href={% url "borrar_auto" auto.id %}>Borrar</a>|
+            <a href={% url "editar_auto" auto.id %}>Editar</a>
         </li>
         {% endfor %}
     </ul>
